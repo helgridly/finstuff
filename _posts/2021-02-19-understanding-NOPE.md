@@ -5,8 +5,6 @@ categories: [NOPE, market makers, delta hedging]
 excerpt: An attempt to give you a working understanding of what NOPE is and the theory behind it. Requires some options knowledge.
 ---
 
-
-
 This post aims to provide a working understanding of what NOPE is and the theory behind it. I will cover:
 
 - Who is on the other side of your option trades
@@ -24,6 +22,8 @@ This post is aimed at someone with a beginner-to-intermediate understanding of o
 - That the Black-Scholes formula exists and that it's used to price options using the greeks. (But don't need to know it or be able to derive it!)
 
 If you don't know these things, the good news is that there are **many** resources online that can teach you, right on the other side of your favourite search engine :)
+
+I also assume you know who [Lily](https://twitter.com/nope_its_lily) is and have heard about this NOPE thing. Otherwise how did you even get here?
 
 With that out of the way: let's get started.
 
