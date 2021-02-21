@@ -27,10 +27,11 @@ This is not really beginner stuff any more. I'm not going to start drawing formu
 
 **TODO: fix the below link**
 
-You should understand everything in [this post](understanding-NOPE) (what, you think I'm above shilling my own work?), plus:
+You should understand everything in [this post](understanding-NOPE), plus:
 
 - A strong understanding of these options greeks: delta, theta, vega
 
+As before, all this information is widely available on the internet.
 
 ---
 
@@ -84,7 +85,52 @@ So yes, gamma hedging is possible: ultimately it's just a system of simultaneous
 
 But if you're a MM and already in the business of writing options, why would you go buy an option from a different MM? You could write it yourself for cheaper, but then you'd need to hedge _that_ option! In doing so you'd buy all the shares you were trying to avoid in the first place. Seems pointless.
 
-### Gamma squeeze
+### What's a gamma squeeze?
+
+You may have heard the term **gamma squeeze** (or sometimes gamma trap) mentioned lately, probably in the context of GameStop. What is this?
+
+Let's go back to that payoff graph from earlier:
+
+<p align="center">
+<img src="../images/delta-call-option.png">
+<small>The same payoff graph we saw earlier. [<a href="https://www.tradingcampus.in/option-greeks/">source</a>]</small>
+</p>
+
+And let's recap a few things we know:
+
+* Delta is the tangent to the payoff curve
+* Gamma reflects how delta changes as spot price changes, or the _curviness_ of the curve
+* MMs respond to the effects of gamma by adjusting their share position in the underlying
+
+Looking at the graph, where does gamma have the biggest effect? Where is the curve _curviest_?
+
+It's curviest at that curvy bit. That place happens to be at the strike price of the option: that is to say, gamma is highest when the stock price is close to the option's strike price.
+
+You can see this on a graph of delta against the spot price, i.e. plotting the slope of the green line on the y-axis:
+
+<p align="center">
+<img src="../images/delta-s-graph.png">
+<small>Delta at different spot prices. [<a href="https://www.fool.com/investing/2021/01/28/what-is-a-gamma-squeeze//">source</a>]</small>
+</p>
+
+The slope of _this_ line is gamma - the change in delta per $1 change in the underlying. (Yup, we're secretly doing calculus! Sorry!)
+
+Observe:
+
+* Delta is low when the stock price is well below the options price. If your option is far out of the money, a $1 move in stock price doesn't do much, because your option is still worthless.
+* Delta is as high as it can be - approaching 1 - when the stock price is way above the option strike price. This corresponds to your option being very deep in the money: the chance it'll move out of the money are very low, so a $1 move in stock price is just going to make your option (almost) $1 more expensive.
+
+Where is _gamma_ highest? The slope of the delta line is highest when the option is at the money. This makes sense: if your option is either deep in or deep out of the money, a small change in stock price isn't going to affect the option price very much - its fate is already sealed, so gamma is low. But if it's at the money, it could make all the difference (imagine it's expiration day - a $1 move is the difference between your option being worth zero or something!).
+
+So: as the stock price nears (and crosses) the strike price of an option - through the middle section of that S graph - delta starts increasing rapidly. This means that MMs have to buy lots more shares to hedge their risk, pushing the stock price upwards.
+
+As the stock price moves upwards, it enters the high-gamma zone of the _next option strike up_, forcing MMs who sold _those_ options to buy more shares.
+
+Other people on the sidelines see the share price spike, and want to follow the trend. Which strike should a smart investor buy to maximize their return for the least investment? At-the-money! And _another_ MM has to buy shares of the underlying, and up and up and up we go!
+
+_This_ is a gamma squeeze. It typically happens on an option expiry day, where the high-gamma zone has compressed to a near-vertical line. A sudden shift in price can force MMs to buy a _lot_ of shares of the underlying quickly, triggering a cascade effect.
+
+SpotGamma has [a great writeup of how this happened with GameStop](https://spotgamma.com/gme-gamma-squeeze/).
 
 
 
@@ -96,6 +142,10 @@ https://en.wikipedia.org/wiki/Greeks_(finance)
 ---
 
 # References
+
+SpotGamma's whole business is based around understanding gamma:
+- [The Options Gamma Trap](https://spotgamma.com/options-gamma-trap/)
+- 
 
 SqueezeMetrics has written some great papers on this kind of behaviour:
 
@@ -110,6 +160,6 @@ KeyPaganRush on YouTube has some good videos:
 Other stuff:
 
 - [Advanced Options Greeks](https://www.youtube.com/watch?v=ngweIHiKOUg) - good visualisations of how higher greeks 
-
+- [Option Charts](http://devqf.com/optioncharts/optioncharts.htm) - interactive tool showing you how different greeks behave
 
 
