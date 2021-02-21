@@ -143,6 +143,8 @@ Lily has had people approach her making this point (and other criticisms of NOPE
 
 Congratulations - you made it! We've covered a lot: the existence of market makers, how they hedge the risk of options trades, what this means for the market, and how NOPE watches options to guess at upcoming MM hedges. You now have a decent understanding of how NOPE works!
 
+In the next post, we'll take a deeper look into how the behaviour of market makers can make things worse when markets go screwy. Stay tuned!
+
 # References
 
 Sources I used to wrap my head around this:
