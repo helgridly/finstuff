@@ -30,6 +30,7 @@ This is not really beginner stuff any more. I'm not going to start drawing formu
 You should understand everything in [this post](understanding-NOPE), plus:
 
 - A strong understanding of these options greeks: delta, theta, vega
+- The order book and how it works, specifically the difference between limit and stop orders
 
 As before, all this information is widely available on the internet.
 
@@ -122,30 +123,53 @@ Observe:
 
 Where is _gamma_ highest? The slope of the delta line is highest when the option is at the money. This makes sense: if your option is either deep in or deep out of the money, a small change in stock price isn't going to affect the option price very much - its fate is already sealed, so gamma is low. But if it's at the money, it could make all the difference (imagine it's expiration day - a $1 move is the difference between your option being worth zero or something!).
 
-So: as the stock price nears (and crosses) the strike price of an option - through the middle section of that S graph - delta starts increasing rapidly. This means that MMs have to buy lots more shares to hedge their risk, pushing the stock price upwards.
+So: as the stock price nears (and crosses) the strike price of an option - through the middle section of that S graph - delta starts increasing rapidly. This means that MMs have to buy lots more shares to hedge their risk.
+
+The state of the order book matters a lot for what comes next. If the order book has enough limit sells, the MM buys will hit them, be absorbed, and that'll be it. This is what happens most of the time. However, if the order book is thin - if few people are selling - then MMs are forced to buy at higher prices, pushing the stock price upwards.
 
 As the stock price moves upwards, it enters the high-gamma zone of the _next option strike up_, forcing MMs who sold _those_ options to buy more shares.
 
 Other people on the sidelines see the share price spike, and want to follow the trend. Which strike should a smart investor buy to maximize their return for the least investment? At-the-money! And _another_ MM has to buy shares of the underlying, and up and up and up we go!
 
-_This_ is a gamma squeeze. It typically happens on an option expiry day, where the high-gamma zone has compressed to a near-vertical line. A sudden shift in price can force MMs to buy a _lot_ of shares of the underlying quickly, triggering a cascade effect.
+_This_ is a gamma squeeze. It typically happens on an option expiry day, where the high-gamma zone has compressed to a near-vertical line: a sudden shift in price can force MMs to buy a _lot_ of shares of the underlying quickly, triggering a cascade effect. The other necessary condition is a thin order book, leading to big moves when the MMs make their market orders.
 
-SpotGamma has [a great writeup of how this happened with GameStop](https://spotgamma.com/gme-gamma-squeeze/).
+In early 2021 GameStop was the perfect storm for a gamma squeeze: people buying up and refusing to sell shares of the underlying, and a lot of option buying activity. SpotGamma has [a great writeup of how it all played out](https://spotgamma.com/gme-gamma-squeeze/).
 
+If this "rising share prices forces more share buying" situation sounds familiar to you, good job. In the previous post we talked about MMs having to buy shares of the underlying to hedge call options, the same behaviour we see go out of control during a gamma squeeze. In a sense, NOPE is tracking mini-squeezes happening over the day, as a run of hedging activity triggers more hedging by other MMs. Usually the mini-squeeze burns itself out, since there are usually enough limit orders in the order book to absorb the MM trades.
 
+todo:
+- what does it mean to be long/short gamma
+    - having bought or sold options (of either type)
+    - fold this back in to the explanation
 
+- buying lots of options increases IV
+  - this decreases delta (the S curve gets S-ier / less straight)
+- the grid of graphs in the squeezemetrics paper is gamma vs spot price, centred on the strike
+    - this means the _shaded area_ is delta
+    - you're gonna have to reread the paper carefully and internalise it :)
+
+- maybe make a version of the delta graph that shows two S curves at different expiries/IVs
+    - frame this as stretching or squishing the S
 
 ## Other higher-order Greeks
 
 https://en.wikipedia.org/wiki/Greeks_(finance)
 
----
+
+# Thinking about this in terms of liquidity
+
+pull back in our mention from part 1 of how MMs short options amplifies price movements; talk about that in terms of the order book
+
+(not sure if there's anything to this section or if i'm trying to chase the KeyPaganRush videos)
+
+# Further reading
+
+Volpocalypse: https://sixfigureinvesting.com/2019/02/what-caused-the-february-5th-2018-volatility-spike-xiv-termination/
 
 # References
 
 SpotGamma's whole business is based around understanding gamma:
 - [The Options Gamma Trap](https://spotgamma.com/options-gamma-trap/)
-- 
 
 SqueezeMetrics has written some great papers on this kind of behaviour:
 
