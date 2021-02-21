@@ -39,7 +39,7 @@ The *vast* majority of the time you are actually interacting with a **market mak
 
 MMs place _both_ bids and asks on the order book. Their goal is to make money from the difference between those two prices (known as the **spread**) - buy from people who want to sell _now_, sell to people who want to buy _now_, keep the change. That "keep the change" _is_ the business model of a market maker - they have no interest in holding either long or short positions, so they need to get rid of any positions (or otherwise neutralize them) ASAP. Holding a position introduces a _ton_ of risk that they don't want.
 
-In the case of trading stocks, there is typically enough volume that the amount of time they're actually holding a security - between buying it from you and flogging it to someone else - is small, so the whole thing works nicely. Impatient people get to make their trades, the spread is narrowed, they pocket some change - everybody wins. This function is so important that exchanges approve designated market makers who are _contractually obliged_ to place both bid and ask orders.
+In the case of trading stocks, there is typically enough volume that the amount of time they're actually holding a security - between buying it from you and flogging it to someone else - is small, so the whole thing works nicely. Impatient people get to make their trades, the spread is narrowed, they pocket some change - everybody wins. This function is so important that exchanges approve designated market makers who are _contractually obliged_ to place both bid and ask orders, in return for a commission fee.
 
 However.
 
