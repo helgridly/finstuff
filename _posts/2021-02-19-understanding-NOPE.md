@@ -65,7 +65,7 @@ This is it. This is the key insight; if you can wrap your head around this, ever
 
 **Important Thing #1: MMs respond to option sales by taking positions in the underlying.**
 
-They do this in order to "net zero" their portfolio and insulate themselves from the risk of price movements. Doing things to protect yourself from risk is called **hedging**.
+They do this as part of their effort to "net zero" their portfolio and insulate themselves from the risk of price movements. Doing things to protect yourself from risk is called **hedging**.
 
 ### Um, the price isn't going to move just once, though...
 
@@ -118,18 +118,15 @@ In Lily-speak, we are now in an options degenerate market ([part 1](https://medi
 
 Let's recap: we know option buying outweighs option selling, which means that price movements are amplified by MM hedging.
 
-Hold on though. A while back we asked how often MMs hedge price movements, and we said we didn't know. But we _can_ watch the option trades as they happen. So for each one, we can calculate the required hedge in the underlying, and then expect to see that trade come through. If we watch all option trades on all strikes on all expirations, we can build up a picture of "what MMs are going to do next".
+Hold on though. A while back we asked how often MMs hedge price movements, and we said we didn't know. But we _can_ watch the option trades as they happen. So for each one, we can calculate the required hedge in the underlying, and then expect to see that trade come through. If we watch all option trades on all strikes on all expirations, we can build up a picture of "how much the price has been shifted because of MM hedging".
 
 This is what NOPE is doing. In brief, the NOPE calculation is:
 
 1. Add up the deltas of all calls across all strikes across all expirations, weighted by volume; call it `all-call-deltas`
 2. Add up the deltas of all puts across all strikes across expirations, weighted by volume; call it `all-put-deltas`
-3. `NOPE = (all-put-deltas - all-call-deltas) / total-shares-traded`
+3. `NOPE = (all-call-deltas - all-put-deltas) / total-shares-traded`
 
-You can think of it as "how much outstanding delta is there compared to normal trading volume":
-
-- Large positive numbers imply that there's a lot of unhedged put delta outstanding compared to normal share trading volume. There may be a downward price move imminent.
-- Large negative numbers imply that there's a lot of unhedged call delta outstanding compared to normal share trading volume. There may be an upward price move imminent.
+A rising NOPE implies more calls have been sold and thus that the price has been artificially bid up past its usual by MM hedging. (Option buying increases the numerator, MM share buying increases the denominator by the same absolute amount.) The price may have been pushed out of balance - away from its "correct" level, if you like - and could move back down as people selling the underlying shares for a profit. The underlying share trading will increase the denominator, and the price movement back down will reduce the denominator (lower call delta and higher put delta), so NOPE falls again.
 
 You'll notice this isn't perfect. In particular, it's not paying any attention to the ratio of buys to sells for each option; the calculation assumes that _all_ options traded are buys and none are sells. Given that we know that there are _more_ buys than sells this means that NOPE will give us some signal but it won't have the fidelity it could if you kept up with every single trade.
 
