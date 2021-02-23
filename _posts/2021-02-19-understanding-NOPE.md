@@ -126,7 +126,7 @@ This is what NOPE is doing. In brief, the NOPE calculation is:
 2. Add up the deltas of all puts across all strikes across expirations, weighted by volume; call it `all-put-deltas`
 3. `NOPE = (all-call-deltas - all-put-deltas) / total-shares-traded`
 
-A rising NOPE implies more calls have been sold and thus that the price has been artificially bid up past its usual by MM hedging. (Option buying increases the numerator, MM share buying increases the denominator by the same absolute amount.) The price may have been pushed out of balance - away from its "correct" level, if you like - and could move back down as people selling the underlying shares for a profit. The underlying share trading will increase the denominator, and the price movement back down will reduce the denominator (lower call delta and higher put delta), so NOPE falls again.
+A rising NOPE implies more calls have been sold and thus that the price has been artificially bid up past its usual by MM hedging. (Option buying increases the numerator, MM share buying increases the denominator by the same absolute amount.) The price may have been pushed out of balance - away from its "correct" level, if you like - and could move back down as people sell the underlying shares for a profit. Those share sales increase the denominator without affecting the numerator, and NOPE reverts.
 
 You'll notice this isn't perfect. In particular, it's not paying any attention to the ratio of buys to sells for each option; the calculation assumes that _all_ options traded are buys and none are sells. Given that we know that there are _more_ buys than sells this means that NOPE will give us some signal but it won't have the fidelity it could if you kept up with every single trade.
 
