@@ -98,7 +98,7 @@ There's something important hiding in this list. Look at the impact of the MM he
 
 **Important Thing #3: Selling options to MMs stabilizes price action. Buying options from MMs amplifies price action.**
 
-Hmm. So that means the aggregate balance between option buying and option selling is important. If they're in balance, the market moves normally. If option selling dominates, price movements are is dampened, unable to move as much as they might otherwise. And if option buying dominates...
+Hmm. So that means the aggregate balance between option buying and option selling is important. If they're in balance, the market moves normally. If option selling dominates, price movements are dampened, unable to move as much as they might otherwise. And if option buying dominates...
 
 ### Uh oh.
 
