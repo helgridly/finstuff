@@ -159,6 +159,8 @@ https://nope-its-lily.medium.com/a-story-of-liquidity-volatility-and-returns-754
 
 (not sure if there's anything to this section or if i'm trying to chase the KeyPaganRush videos)
 
+vol overview https://www.macrodesiac.com/your-volatility-handbook/
+
 # Further reading
 
 Volpocalypse: https://sixfigureinvesting.com/2019/02/what-caused-the-february-5th-2018-volatility-spike-xiv-termination/
