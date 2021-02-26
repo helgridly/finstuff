@@ -45,7 +45,9 @@ However.
 
 The "buy it and flog it to someone else quickly" approach does not work for options. The demand is just not there. Think of an options chain: a zillion dates, and a zillion strikes for each date, multiplied by two (for puts and calls). The daily volume for the most popular single option is less than the _minutely_ volume for its underlying!
 
-A market maker cannot take the other side of your trade and flog it to someone else if there's no demand for it. But they still have that pesky contractual obligation to take the trade. So they have to do something else, because being forced to take positions (that you didn't even choose!) is, um, terrible for your portfolio and not anywhere in your business model! That something else is called **hedging**, and it's the core behaviour that NOPE watches.
+While a market maker will be very glad to sell the other side of your trades to anyone else who comes along, they have to be able to do something else in the meantime, because being forced to take positions (that you didn't even choose!) is, um, terrible for your portfolio and not anywhere in your business model! That something else is called **hedging**, and it's the core behaviour that NOPE watches.
+
+I will note for the sake of any pedants reading that MMs are not the only people who hedge option trades; plenty of other institutions do it too, and for all sorts of reasons. _Who_ is doing the hedging doesn't matter; the _how_ does. I will continue to say "market makers" in this piece, because saying "market makers and hedge funds and other institutions" every time is clumsy, I find it helpful to imagine a particular someone, and that someone may just as well be a market maker.
 
 # How do MMs avoid being stuck with the other side of my option trades?
 
@@ -156,7 +158,7 @@ Want to trade NOPE?
 
 More advanced reading on NOPE:
 
-- [The NOPE brain worm](https://thisismy.substack.com/p/the-nope-brain-worm): some further notes on NOPE
+- [The NOPE Brain Worm](https://thisismy.substack.com/p/the-nope-brain-worm): some further notes on NOPE
 - [Lily's writing](https://nope-its-lily.medium.com/) - in particular I'd recommend:
     - [Let's Talk About The NOPE](https://nope-its-lily.medium.com/lets-talk-about-the-nope-9426d6cf350a)
     - [Interpreting the NOPE: A Brief User's Guide](https://nope-its-lily.medium.com/interpreting-the-nope-a-brief-users-guide-41c57c1b47a0)
@@ -166,9 +168,5 @@ More advanced reading on NOPE:
 # Thanks
 
 Proofreaders:
-- @specs
-- @Toven
-- @sean,
-- @Sophos
-- @invaderkay
-- @Goat 
+- [@tilmonedwards](https://twitter.com/tilmonedwards)
+- [@hunterspecs](https://twitter.com/hunterspecs) (author of The NOPE Brain Worm, linked above)
