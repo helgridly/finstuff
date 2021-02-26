@@ -69,7 +69,7 @@ You can see this on a graph of delta against the spot price, i.e. plotting the s
 
 <div align="center">
 <img src="../images/delta-s-graph.png" width=640>
-<p><small>Delta at different spot prices. [<a href="https://www.fool.com/investing/2021/01/28/what-is-a-gamma-squeeze//">source</a>]</small></p>
+<p><small>Delta at different spot prices. [my image, use as you please]</small></p>
 </div>
 
 The slope of _this_ line is gamma - the change in delta per $1 change in the underlying. (Yup, we're secretly doing calculus! Sorry!)
@@ -124,7 +124,7 @@ There is another counter-force that helps prevent gamma squeezes: option buying 
 
 <div align="center">
 <img src="../images/delta-s-graph-vol.png" width=640>
-<p><small>Delta with different volatility. [<a href="https://www.fool.com/investing/2021/01/28/what-is-a-gamma-squeeze//">source</a>]</small></p>
+<p><small>Delta with different volatility. [my image, use as you please]</small></p>
 </div>
 
 The change in
